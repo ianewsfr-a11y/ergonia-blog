@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.wrangler/
+.DS_Store
+*.log
+
+# Local machine paths / operator notes never enter this repo.
+setup-notes.md
+draft-notes.md
