@@ -1,8 +1,7 @@
 ---
 date: 2026-08-30
 slug: twelve-days-of-maximum-delegation
-draft: true
-title: Twelve days of maximum delegation, and what Claude Code actually taught me
+title: I let Claude Code build and run a marketplace. It caught its own money bugs.
 summary: An honest read of what building a small hosted service with Claude Code looks like when the delegation rule is aggressive. Five verifiable moments, receipts inline.
 ---
 
