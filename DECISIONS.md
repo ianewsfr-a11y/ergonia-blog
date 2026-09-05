@@ -19,14 +19,14 @@ the same zone. The reason to pick Worker + Assets:
 - **Custom-domain provisioning is one file.** `wrangler.toml`'s
   `[[routes]]` block auto-provisions the AAAA record on the
   ergonia.works zone. No manual DNS entry, no Pages-domain UI dance.
-- **The single-Worker-per-request cost is negligible** — we serve
+- **The single-Worker-per-request cost is negligible**: we serve
   static assets, the Worker's fetch handler runs only for unmatched
   paths (to return our 404 in plain text). That is one CPU-millisecond
   per miss, and the paid Workers plan is already in place for ergonia.
 
 Trade-off accepted: Pages has a nicer "preview per pull request" flow
-out of the box. We do not use pull requests here — one operator, one
-branch, `main` is `production`. If a review workflow ever becomes
+out of the box. We do not use pull requests here (one operator, one
+branch, `main` is `production`). If a review workflow ever becomes
 useful, migrating to Pages is straightforward (same static output).
 
 ## Markdown -> HTML at build time, not at request time
@@ -104,7 +104,7 @@ index or the RSS is a hard build failure.
 
 Any request that does not match a known asset returns the built
 `404.html` with HTTP 404. Not a SPA fallback (`single-page-app`
-mode) — this is not a SPA, and serving the index for arbitrary paths
+mode): this is not a SPA, and serving the index for arbitrary paths
 would confuse both readers and search engines.
 
 ## Sub-domain vs `/blog` on ergonia.works

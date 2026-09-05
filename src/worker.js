@@ -1,5 +1,5 @@
 // A near-empty Worker. Every request for a known asset is served
-// directly by the Assets binding without touching this function — this
+// directly by the Assets binding without touching this function; this
 // only runs for paths the binding does not match, at which point it
 // returns our 404 page.
 //

@@ -207,7 +207,7 @@ function writeFeed(posts) {
     marked.setOptions({ gfm: true, breaks: false });
     const bodyHtml = marked.parse(p.body);
     const contentEncoded = `<![CDATA[${bodyHtml}]]>`;
-    // RFC 822 pubDate: we use the post's date at 00:00:00 GMT — stable
+    // RFC 822 pubDate: we use the post's date at 00:00:00 GMT, stable
     // and unambiguous.
     const pub = new Date(p.date + "T00:00:00Z").toUTCString();
     return `  <item>
@@ -236,6 +236,31 @@ ${items}
   writeFileSync(join(DIST, "feed.xml"), rss);
 }
 
+// No em-dash on any served surface. The rule holds for post bodies, for
+// the shared template, for the CSS comments the template inlines, for
+// the RSS, for the 404 page, and for anything copied from ./static.
+// A single U+2014 in dist/ fails the build so a future change cannot
+// silently reintroduce one.
+function assertNoEmDashInDist() {
+  const bad = [];
+  function walk(dir) {
+    for (const entry of readdirSync(dir)) {
+      const p = join(dir, entry);
+      const s = statSync(p);
+      if (s.isDirectory()) { walk(p); continue; }
+      if (!/\.(html|css|xml|txt|json|svg|md)$/i.test(entry)) continue;
+      const body = readFileSync(p, "utf8");
+      const n = (body.match(/—/g) || []).length;
+      if (n > 0) bad.push(`${p}: ${n} em-dash(es)`);
+    }
+  }
+  walk(DIST);
+  if (bad.length) {
+    console.error("build: em-dash(es) landed in dist/:\n  " + bad.join("\n  "));
+    process.exit(1);
+  }
+}
+
 // Anything in ./static is copied verbatim to /dist (favicon, extra assets).
 function copyStatic() {
   if (!existsSync(STATIC)) return;
@@ -257,4 +282,5 @@ writeIndex(posts);
 writeFeed(posts);
 for (const p of posts) writePost(p);
 copyStatic();
+assertNoEmDashInDist();
 console.log(`built ${posts.length} post(s) into dist/  (${posts.filter((p) => p.draft).length} draft)`);

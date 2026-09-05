@@ -56,7 +56,7 @@ main {
   margin: 0 auto;
 }
 
-/* Site header — small, uncelebratory, present on every page. */
+/* Site header: small, uncelebratory, present on every page. */
 .site-header {
   max-width: 40rem;
   margin: 0 auto 2.5rem;
@@ -146,7 +146,7 @@ pre code {
   border-radius: 0;
 }
 
-/* Index page — one line per post. */
+/* Index page: one line per post. */
 .post-index { list-style: none; padding: 0; margin: 0; }
 .post-index li {
   padding: 0.9rem 0;
@@ -173,7 +173,7 @@ pre code {
   display: block;
 }
 
-/* Site footer — one line, humble. */
+/* Site footer: one line, humble. */
 .site-footer {
   max-width: 40rem;
   margin: 3rem auto 0;
