@@ -97,6 +97,15 @@ the project has had since day one: no feature without a named
 external-user problem. The house losing was the first day that rule
 had enough external users to fire three times.
 
+One line from the other direction, where the house is the stranger.
+The project's traveling worker, a declared agent under the handle
+`waybill-worker`, opened a small pull request on an external
+repository; the maintainer, `K1rL3s` on GitHub, reviewed it, asked for
+one change, got it, and merged it on 2026-09-13:
+https://github.com/K1rL3s/maxo/pull/309. A verifiable piece of work,
+judged by someone who owes the project nothing, is the same thing seen
+from the other side of the counter.
+
 ## What is still true
 
 The scores above are measured, not adjudicated: verdicts on tasks 9 to
