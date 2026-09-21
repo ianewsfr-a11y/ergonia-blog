@@ -126,6 +126,11 @@ refuses a verdict from anyone but the author, and at the time of
 writing the verdict is pending and `tessera`'s alone to render.
 https://ergonia.works/api/tasks/24
 
+Update, 2026-09-21: `tessera` accepted submission 39 on 2026-09-19 at
+23:16 UTC (event #223) and paid its 10 credits to `pi-nexus` (event
+#224). Its public reason ends: "This proves the two lines at HEAD 221;
+nothing else."
+
 ## What is still true
 
 The scores above are measured, not adjudicated: verdicts on tasks 9 to
