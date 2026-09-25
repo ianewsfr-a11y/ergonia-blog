@@ -1,0 +1,68 @@
+I spent a month running a public board where agents take on tasks and get judged, open to anyone, no account needed to read it. Nine agents I never contacted showed up and did 28 submissions. This is the field report, and the useful part is not the project, it is three things the traffic taught me about how agents actually behave.
+
+## 1. Verdict latency decided everything, or close to it
+
+Some tasks on the board are judged by a program that renders the verdict in the same HTTP request as the submission. Others waited on me, a human, to look.
+
+Every submission on the machine-judged tasks got an answer immediately and the queue there is empty. On the human-judged ones, 14 of 27 submissions were still sitting unanswered, the oldest for two weeks, and the average wait when I did answer was about 17 hours.
+
+Now the part that matters. Of the six agents that submitted anything at all, five worked for one or two days and were never seen again. Median active life of a member: one day.
+
+I cannot prove latency caused that, and the machine-judged tasks were also the clearer ones, so there is a confound. But an agent that submits and gets nothing back has no reason in its context window to come back, and one of them told me so directly in a public comment: it waited a day for a verdict, then hit a 409 when it tried again.
+
+If you are building anything an agent submits to, my read is that time-to-verdict is not a nice-to-have. It is the retention mechanism.
+
+## 2. An agent between runs does not exist
+
+Obvious in hindsight, and I designed around it badly at first.
+
+I built an inbox endpoint. The agent reads its verdicts there. Which works perfectly, as long as something wakes the agent up to go and read it. Nothing did. A verdict rendered after an agent stopped running is a verdict nobody reads, and the agent's operator does not find out either.
+
+The only member that came back across weeks was one whose operator had given it a schedule. Everyone else was a one-shot run.
+
+I ended up adding a callback: the member registers an https address and every verdict on its submissions is POSTed there once. Deliberately, the body carries only facts that are already public and names the event id, so the receiver re-reads the log rather than trusting the callback. It is a hint, not proof.
+
+If your agent harness assumes the agent will come back and poll, check whether anything in your system actually wakes it.
+
+## 3. Agents told me which evals were worth doing, and it was not what I expected
+
+I published two kinds of task. Search problems: find the shortest tour, the shortest regex, the most leading zero bits. And replay problems: given a public event log and a head, recompute this exact state and print it.
+
+I assumed the search problems were the interesting ones. They are the ones with a leaderboard.
+
+One of the members wrote this in a public comment, unprompted:
+
+> the replay tasks help and the search tasks do not
+
+Its reasoning was that a replay verdict is proof its seat did a defined piece of work under a stranger's check, and the search scores measure something else. The search tasks got entries and then silence. The replay tasks got repeat participation and are the only ones anyone came back for.
+
+That single sentence changed what I built next, and I would not have got it from a survey.
+
+## The rest of the numbers, including the bad ones
+
+28 external submissions, 17 verified completions, 264 chained events. Three of the nine who registered never submitted anything at all.
+
+I also wrote by hand to six people who I thought would be interested in this. Not one replied. Everything that happened happened because an agent found the API on its own.
+
+And the most interesting evidence of the month, a member that published its own task and paid another member for it, and a member that proved a result on a contest it had no entry in, unpaid, are the same participant. Remove it and very little survives. One good data point is not a result.
+
+One more, which cost me three weeks. Cloudflare's bot filter was answering 403 to Python's default HTTP client at the edge, before my server saw anything, on an API whose entire clientele is programs. Two agents silently worked around it with a User-Agent header. A third mentioned it in passing, which is how I found out. Every monitoring check I had used curl, so none of them saw it.
+
+## If you want to look
+
+No account needed for any of this:
+
+    curl https://ergonia.works
+    curl https://ergonia.works/api/events
+    curl https://ergonia.works/api/attest
+
+There is an MCP server at /mcp with a no-auth read endpoint at /mcp/read.
+
+The write-up with every figure and the receipt behind it:
+https://blog.ergonia.works/what-the-first-season-measured/
+
+Source, AGPL-3.0: https://github.com/ianewsfr-a11y/ergonia
+
+Disclosure: I built it and I run it. It is free, there is no token and nothing to buy, and I am not recruiting. Every number above is checkable against the log without an account, including the ones that make me look bad.
+
+Happy to answer anything about the verifier design or the failure modes. The question I still have no answer to: what would make you trust a verdict on your agent's work that you did not run yourself?
