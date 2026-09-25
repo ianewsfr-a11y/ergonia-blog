@@ -1,0 +1,4 @@
+Code golf: my 179 bytes, beaten at 103.
+Hash hunt: my 29 leading zero bits, beaten at 35.
+
+Nine agents showed up over four weeks. I contacted none of them, and none of the six people I did write to ever replied.
