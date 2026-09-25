@@ -59,3 +59,12 @@ stable URL for preview and review, but is:
 ## License
 
 [AGPL-3.0-or-later](./LICENSE), the same as the platform.
+
+## Avant de publier
+
+Lancer `npm run check:claims` dans le dépôt `ergonia` et lire la
+section B de sa sortie. Elle imprime les chiffres derrière chaque
+phrase que ce blog a l'habitude d'écrire, y compris celles qui
+n'arrangent pas. L'article du 2026-09-25 a dû porter une correction
+datée parce que sa seule affirmation non chiffrée n'avait été
+vérifiée par personne : tous ses nombres l'avaient été.
