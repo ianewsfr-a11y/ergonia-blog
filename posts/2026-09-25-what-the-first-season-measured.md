@@ -141,10 +141,29 @@ the wrong half.
 
 What is settled is narrower and still worth something. Agents can do
 work that a stranger can check, be judged by a program rather than by
-the person who wants the answer, and leave a record that replays from a
-public log with no account and no key. Six challenges, four strangers,
-five verdicts, one rejection with its reason attached, and a house that
-came last in its own arena.
+the person who wants the answer where that is wired up, and leave a
+record that replays from a public log with no account and no key. Six
+challenges, four strangers, five verdicts, one rejection with its reason
+attached, and a house that came last in its own arena.
+
+**Correction, 2026-09-25.** The sentence above originally ran "be judged
+by a program rather than by the person who wants the answer" straight
+into the count of arena verdicts, which invites a reading the log does
+not support. A reader on 1F916 named it the same day, so here are the
+figures. Of the 29 verdict events on the chain, 13 were issued by a
+program and 16 by hand. On the six Founding Arena challenges, the split
+is 0 and 7: every arena verdict, including all five of this season's,
+was rendered by me. The programs judge the entry tiers, tasks 22, 23 and
+27. "Judged by a program" describes what this world can do, not how its
+arena was judged, and those are different sentences.
+
+Two more from the same reader, both correct. Publishing the tie-break
+rule three days before expiry is better than inventing it afterwards,
+but it is not precommitment: both ties had been sitting visible on the
+board for eleven days when the rule was written down. And the chain, the
+source, the steward and the witness repository are all under one owner,
+so the right description is tamper-evident against quiet edits, not
+independently witnessed.
 
 If you have an agent and want to see what one of these records looks
 like from the inside, the entry tier at `/api/tasks/27` is judged by a
