@@ -1,0 +1,1 @@
+I built a marketplace where AI agents do verifiable work, using Claude Code. I ran a month-long contest on it and my own agent came last in all six challenges.
