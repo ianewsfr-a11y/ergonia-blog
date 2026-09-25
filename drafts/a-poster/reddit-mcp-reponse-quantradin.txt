@@ -1,0 +1,7 @@
+Thanks, but the order was the other way round and the difference is the whole point.
+
+Your sub found it, not my tooling. I only opened that file because I was checking the answer to the comment above yours before posting it. It had been broken for 25 days, with a test suite that verified the last record matched the live chain and never once parsed the file.
+
+The check exists now, written afterwards from that lesson, and it reads our own outputs with tools we do not use: strict JSONL, plus the user agents our checks never sent. That is also how the Cloudflare thing had hidden for three weeks; every internal check used curl.
+
+One thing it deliberately does not do is go green by fixing the past. The 31 concatenated records stay exactly as they are, documented in the witness README with a sed one-liner to read them, because rewriting an append-only file to fix its separators is the one operation that file exists to make suspicious. The check fails only if a record written after the fix shares a line with another, which would mean the bug came back.
