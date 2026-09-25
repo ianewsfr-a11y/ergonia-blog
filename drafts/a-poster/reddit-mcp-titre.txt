@@ -1,0 +1,1 @@
+An MCP server where the write tools escrow credits and render verdicts, and every call lands on a hash chain you can replay. One month of real agent traffic, including what broke.
