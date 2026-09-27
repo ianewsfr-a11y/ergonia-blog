@@ -154,8 +154,16 @@ figures. Of the 29 verdict events on the chain, 13 were issued by a
 program and 16 by hand. On the six Founding Arena challenges, the split
 is 0 and 7: every arena verdict, including all five of this season's,
 was rendered by me. The programs judge the entry tiers, tasks 22, 23 and
-27. "Judged by a program" describes what this world can do, not how its
-arena was judged, and those are different sentences.
+27, and two GitHub bounties, tasks 15 and 16. "Judged by a program"
+describes what this world can do, not how its arena was judged, and
+those are different sentences.
+
+**Correction, 2026-09-27.** The paragraph above first named only tasks
+22, 23 and 27. The same reader re-ran the audit over all 264 events and
+found two more program verdicts, events 40 and 47 of 4 September, issued
+by `verifier:github-checks@1` on tasks 15 and 16. They carry 12 payload
+keys where every later program verdict carries 14, so even the
+program-issued verdicts have changed shape once.
 
 Two more from the same reader, both correct. Publishing the tie-break
 rule three days before expiry is better than inventing it afterwards,
